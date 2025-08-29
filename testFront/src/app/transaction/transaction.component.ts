@@ -1,75 +1,31 @@
 // transaction.component.ts
-import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TrransactionService } from '../services/trransaction.service';
+import { Transaction } from '../models/transaction';
 
 @Component({
   standalone: true,
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.scss',
-  imports: [FormsModule, MatIconModule],
+  imports: [FormsModule, MatIconModule, HttpClientModule],
+  providers: [TrransactionService],
 })
-export class TransactionComponent {
+export class TransactionComponent implements OnInit {
   searchTerm = '';
   filterBy = 'Date';
   currentPage = 1;
   totalPages = 10;
   pages = [1, 2, 3, 4, 5];
+  transacService = inject(TrransactionService);
 
-  transactions = [
-    {
-      _id: '45',
-      date: '2025-07-12T09:22:00Z',
-      montant: 25000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '4',
-      date: '2025-07-12T09:22:00Z',
-      montant: 2500000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '5',
-      date: '2025-07-12T09:22:00Z',
-      montant: 15000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '95',
-      date: '2025-07-12T09:22:00Z',
-      montant: 25000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '4005',
-      date: '2025-07-12T09:22:00Z',
-      montant: 25000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '000012',
-      date: '2025-07-12T09:22:00Z',
-      montant: 25000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-    {
-      _id: '000005',
-      date: '2025-07-12T09:22:00Z',
-      montant: 25000,
-      description: 'Salaire',
-      monnaie: 'XAF',
-    },
-  ];
+  transactions: Transaction[] = [];
 
   filteredTransactions = [...this.transactions];
+  constructor() {}
 
   filterTransactions() {
     this.filteredTransactions = this.transactions.filter((transaction) =>
@@ -81,5 +37,11 @@ export class TransactionComponent {
 
   goToPage(page: number) {
     this.currentPage = page;
+  }
+  ngOnInit(): void {
+    this.transacService
+      .getTransaction()
+      .subscribe((transaction) => (this.transactions = transaction));
+    console.log(this.transactions);
   }
 }

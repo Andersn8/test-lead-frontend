@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   font-family: "poppins";
+  overflow-y: hidden;
 }
 
 .left-section {
@@ -9,9 +10,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  padding: 60px;
+  padding: 150px 60px 60px 60px;
   color: white;
   position: relative;
 }
@@ -38,14 +38,8 @@
 
 .card-image {
   position: absolute;
-  bottom: 100px;
-  right: -100px;
-}
-
-.card-image img {
-  width: 300px;
-  height: auto;
-  transform: rotate(-15deg);
+  top: 5px;
+  right: -350px;
 }
 
 .right-section {
@@ -216,10 +210,11 @@ input:checked + .slider:before {
   .card-image {
     position: static;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 500px;
   }
 
   .card-image img {
-    width: 200px;
+    width: 60%;
+    height: 40vh;
   }
 }

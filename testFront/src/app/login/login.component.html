@@ -6,7 +6,7 @@
       <h2>TRANSCA-fric</h2>
     </div>
     <div class="card-image">
-      <img src="../assets/images/dash.png" alt="Transca Card" />
+      <img src="/images/login.png" alt="Transca Card" />
     </div>
   </div>
 
@@ -50,7 +50,13 @@
           <span>mot de passe oublié ? </span>
           <a href="#">modifier</a>
         </div>
-
+        @if(errorLogin){
+        <div class="alert alert-danger" role="alert">user inconnu !!!!!</div>
+        } @if(Loginempty){
+        <div class="alert alert-danger" role="alert">
+          veillez remplir tous les champs !!!!!
+        </div>
+        }
         <button type="submit" class="login-btn">se connecter</button>
       </form>
     </div>

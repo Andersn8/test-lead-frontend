@@ -14,7 +14,7 @@
 }
 
 .logo-img {
-  height: 40px;
+  height: 100px;
 }
 
 .nav-menu {
@@ -131,9 +131,12 @@
 }
 
 .woman-image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  border-radius: 15px;
+}
+.woman-image {
+  width: 100%;
+  height: auto;
 }
 
 .right-section {

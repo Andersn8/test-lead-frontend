@@ -2,7 +2,7 @@
   <!-- Header -->
   <header class="header">
     <div class="logo">
-      <img src="../assets/images/logo.png" alt="Nafric" class="logo-img" />
+      <img src="/images/logo.png" alt="Nafric" class="logo-img" />
     </div>
 
     <nav class="nav-menu">
@@ -42,10 +42,7 @@
         </p>
       </div>
       <div class="woman-image">
-        <img
-          src="../assets/images/transaction.jpg"
-          alt="Woman with phone and card"
-        />
+        <img src="/images/transaction.jpg" alt="Woman with phone and card" />
       </div>
     </div>
 
@@ -56,7 +53,7 @@
           <input
             type="text"
             class="text-align-center"
-            placeholder="rechercher par un nom"
+            placeholder="rechercher par description"
             [(ngModel)]="searchTerm"
             (input)="filterTransactions()"
           />
@@ -94,9 +91,9 @@
               <tr>
                 <td>{{ i + 1 }}</td>
                 <td>{{ transaction.date }}</td>
-                <td>{{ transaction.montant }}</td>
+                <td>{{ transaction.amount }}</td>
                 <td>{{ transaction.description }}</td>
-                <td>{{ transaction.monnaie }}</td>
+                <td>{{ transaction.currency }}</td>
               </tr>
               }
             </tbody>

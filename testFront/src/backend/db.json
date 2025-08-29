@@ -1,7 +1,7 @@
 {
   "User": [
-    { "user_id": "1", "username": "alice", "password": "password123" },
-    { "user_id": "2", "username": "anderson", "password": "password001" }
+    { "user_id": "usr1", "username": "alice", "password": "password123" },
+    { "user_id": "usr2", "username": "anderson", "password": "password001" }
   ],
   "accounts": [
     { "id": "acc_1", "type": "current", "currency": "XAF", "balance": 542300 },

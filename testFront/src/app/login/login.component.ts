@@ -7,25 +7,24 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-// 1. Importe le MatIconModule
 import { MatIconModule } from '@angular/material/icon';
-import { UserService } from '../services/user.service';
-import { User } from '../models/user';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../services/auth.service'; // Injecte le service AuthService
+import { NgIf } from '@angular/common'; // Ajouté pour le template
+
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [ReactiveFormsModule, MatIconModule, HttpClientModule],
-  providers: [UserService],
+  imports: [ReactiveFormsModule, MatIconModule, HttpClientModule, NgIf], // Ajoute NgIf
+  providers: [AuthService], // Fournit le service AuthService
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  AllUser: User[] = [];
   errorLogin!: boolean;
   Loginempty!: boolean;
-  userService = inject(UserService);
+  authService = inject(AuthService); // Injecte AuthService
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -33,25 +32,23 @@ export class LoginComponent implements OnInit {
       rememberMe: [false],
     });
   }
-  ngOnInit(): void {
-    this.userService.getUserAll().subscribe((user) => (this.AllUser = user));
-  }
+  ngOnInit(): void {} // Pas besoin de charger tous les utilisateurs ici
   onSubmit() {
     if (this.loginForm.valid) {
       this.Loginempty = false;
-      const usernameValue = this.loginForm.get('username')?.value;
-      const passwordValue = this.loginForm.get('password')?.value;
-
-      // Simulate login
-      this.AllUser.forEach((element) => {
-        if (
-          usernameValue == element.username &&
-          passwordValue == element.password
-        ) {
+      const { username, password } = this.loginForm.value;
+      // Utilise le service d'authentification
+      this.authService.login({ username, password }).subscribe({
+        next: (user) => {
+          // Si la connexion réussit
+          console.log('Connexion réussie:', user);
           this.router.navigate(['/dashboard']);
-        } else {
+        },
+        error: (err) => {
+          // Si la connexion échoue
+          console.error('Erreur de connexion:', err);
           this.errorLogin = true;
-        }
+        },
       });
     } else {
       this.Loginempty = true;

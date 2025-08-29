@@ -51,6 +51,14 @@
       "device": "asas",
       "numeroBeneficiaire": "dadas",
       "montant": 8999
+    },
+    {
+      "id": "bac3",
+      "compteSource": "sasas",
+      "description": "dsdsdsd",
+      "device": "DL",
+      "numeroBeneficiaire": "sasas",
+      "montant": 1000
     }
   ],
   "transactions": [
@@ -60,6 +68,14 @@
       "amount": 25000,
       "currency": "XAF",
       "description": "Loyer Juillet",
+      "status": "posted"
+    },
+    {
+      "id": "tx_1",
+      "date": "2025-07-12T09:22:00Z",
+      "amount": 25000,
+      "currency": "XAF",
+      "description": "va",
       "status": "posted"
     },
     {

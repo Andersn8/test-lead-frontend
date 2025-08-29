@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TrransactionService } from '../services/trransaction.service';
 import { Transaction } from '../models/transaction';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Component({
   standalone: true,
@@ -25,7 +26,8 @@ export class TransactionComponent implements OnInit {
   router = inject(Router);
   transactions: Transaction[] = [];
   filteredTransactions: any[] = [];
-
+  //authService = inject(AuthService);
+  user!: User;
   constructor() {}
 
   filterTransactions() {
@@ -40,6 +42,7 @@ export class TransactionComponent implements OnInit {
     this.currentPage = page;
   }
   ngOnInit(): void {
+    //this.user = this.authService.getCurrentUser();
     this.transacService
       .getTransaction()
       .subscribe((transaction) => (this.transactions = transaction));

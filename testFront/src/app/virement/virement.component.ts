@@ -23,7 +23,7 @@ import { Virement } from '../models/virement';
 export class VirementComponent {
   virementForm: FormGroup;
   virementService = inject(VirementService);
-
+  afficherAlerte = false;
   transactions: Virement[] = [];
   constructor(private fb: FormBuilder) {
     this.virementForm = this.fb.group({
@@ -38,7 +38,13 @@ export class VirementComponent {
   onSubmit() {
     if (this.virementForm.valid) {
       this.virementService.addVirement(this.virementForm.value).subscribe();
-      console.log('ajout réussit!!!!');
+      this.afficherAlerte = true;
+
+      // 2. Définit un timer de 10 secondes (10000 ms)
+      setTimeout(() => {
+        // 3. Rend la div invisible après 10 secondes
+        this.afficherAlerte = false;
+      }, 5000);
     }
   }
 }

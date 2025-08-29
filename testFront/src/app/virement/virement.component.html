@@ -47,7 +47,11 @@
     <div class="right-section">
       <div class="virement-card">
         <h2>Effectuez Un Nouveau Virement</h2>
-
+        @if (afficherAlerte) {
+        <div class="alert alert-success text-center" role="alert">
+          virement ajouté avec success
+        </div>
+        }
         <form [formGroup]="virementForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label>Compte Source <span class="required">*</span></label>

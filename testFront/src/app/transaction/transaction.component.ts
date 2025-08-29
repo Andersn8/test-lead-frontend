@@ -23,8 +23,8 @@ export class TransactionComponent implements OnInit {
   transacService = inject(TrransactionService);
 
   transactions: Transaction[] = [];
+  filteredTransactions: any[] = [];
 
-  filteredTransactions = [...this.transactions];
   constructor() {}
 
   filterTransactions() {
@@ -42,6 +42,6 @@ export class TransactionComponent implements OnInit {
     this.transacService
       .getTransaction()
       .subscribe((transaction) => (this.transactions = transaction));
-    console.log(this.transactions);
+    this.filteredTransactions = [...this.transactions];
   }
 }

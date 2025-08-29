@@ -11,6 +11,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { VirementService } from '../services/virement.service';
 import { Virement } from '../models/virement';
+import { Route, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { Virement } from '../models/virement';
 export class VirementComponent {
   virementForm: FormGroup;
   virementService = inject(VirementService);
+  router = inject(Router);
   afficherAlerte = false;
   transactions: Virement[] = [];
   constructor(private fb: FormBuilder) {
@@ -46,5 +48,8 @@ export class VirementComponent {
         this.afficherAlerte = false;
       }, 5000);
     }
+  }
+  logout() {
+    this.router.navigate(['/login']);
   }
 }

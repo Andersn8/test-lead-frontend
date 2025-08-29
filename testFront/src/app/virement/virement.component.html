@@ -27,7 +27,12 @@
       <div class="user-profile">
         <mat-icon>person</mat-icon>
         <span class="username">Anderson Nono</span>
-        <mat-icon class="brand-icon text-danger">logout</mat-icon>
+        <mat-icon
+          class="brand-icon text-danger"
+          role="button"
+          (click)="logout()"
+          >logout</mat-icon
+        >
       </div>
     </div>
   </header>

@@ -1,24 +1,19 @@
 // dashboard.component.ts
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
-  imports: [MatIconModule, HeaderComponent],
+  imports: [MatIconModule],
 })
 export class DashboardComponent {
-  accounts = [
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-    { name: 'Adriana Bart' },
-  ];
+  accounts = [{ name: 'Adriana Bart' }];
+  router = inject(Router);
+  logout() {
+    this.router.navigate(['/login']);
+  }
 }

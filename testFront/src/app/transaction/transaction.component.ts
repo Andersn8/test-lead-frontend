@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { TrransactionService } from '../services/trransaction.service';
 import { Transaction } from '../models/transaction';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -21,7 +22,7 @@ export class TransactionComponent implements OnInit {
   totalPages = 10;
   pages = [1, 2, 3, 4, 5];
   transacService = inject(TrransactionService);
-
+  router = inject(Router);
   transactions: Transaction[] = [];
   filteredTransactions: any[] = [];
 
@@ -43,5 +44,8 @@ export class TransactionComponent implements OnInit {
       .getTransaction()
       .subscribe((transaction) => (this.transactions = transaction));
     this.filteredTransactions = [...this.transactions];
+  }
+  logout() {
+    this.router.navigate(['/login']);
   }
 }

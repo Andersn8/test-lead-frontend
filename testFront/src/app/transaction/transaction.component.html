@@ -1,0 +1,129 @@
+<div class="transaction-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="Nafric" class="logo-img" />
+    </div>
+
+    <nav class="nav-menu">
+      <a href="/dashboard" class="nav-item">
+        <mat-icon>dashboard</mat-icon>
+        DASBOARD
+      </a>
+      <a href="/transactions" class="nav-item active">
+        <mat-icon>swap_vertical_circle</mat-icon>
+        TRANSACTIONS
+      </a>
+      <a href="/virement" class="nav-item">
+        <mat-icon>payment</mat-icon>
+        VIREMENT
+      </a>
+    </nav>
+
+    <div class="user-section">
+      <div class="notification">
+        <mat-icon matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+      </div>
+      <div class="user-profile">
+        <mat-icon>person</mat-icon>
+        <span class="username">Anderson Nono</span>
+        <mat-icon class="brand-icon text-danger">logout</mat-icon>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="left-section">
+      <div class="page-header">
+        <h1>TRANSACTION</h1>
+        <p>
+          Liste Des Transactions Effectuées<mat-icon>attach_money</mat-icon>
+        </p>
+      </div>
+      <div class="woman-image">
+        <img
+          src="../assets/images/transaction.jpg"
+          alt="Woman with phone and card"
+        />
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="search-section">
+        <div class="search-container">
+          <mat-icon>search</mat-icon>
+          <input
+            type="text"
+            class="text-align-center"
+            placeholder="rechercher par un nom"
+            [(ngModel)]="searchTerm"
+            (input)="filterTransactions()"
+          />
+        </div>
+        <button class="search-btn">Rechercher</button>
+      </div>
+
+      <div class="table-container">
+        <div class="table-header">
+          <h2>Liste Des Transactions</h2>
+          <div class="filter-section">
+            <span>Filter Par :</span>
+            <select [(ngModel)]="filterBy" (change)="filterTransactions()">
+              <option value="Date">Date</option>
+              <option value="Montant">Montant</option>
+              <option value="Description">Description</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="transactions-table">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>Date ⬇</th>
+                <th>Montant ⬇</th>
+                <th>Description ⬇</th>
+                <th>Monnaie</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (transaction of filteredTransactions; track transaction._id)
+              { @let i = $index;
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.montant }}</td>
+                <td>{{ transaction.description }}</td>
+                <td>{{ transaction.monnaie }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button class="page-btn" [disabled]="currentPage === 1">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <span class="page-numbers">
+            @for (page of pages; track page){
+            <span
+              [class.active]="page === currentPage"
+              (click)="goToPage(page)"
+              class="page-number"
+              >{{ page }}</span
+            >
+            <span></span>
+
+            }
+          </span>
+          <button class="page-btn" [disabled]="currentPage === totalPages">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

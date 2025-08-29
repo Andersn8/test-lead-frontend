@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="left-section">
+    <div class="welcome-text">
+      <h1>BIENVENUE</h1>
+      <p>SUR</p>
+      <h2>TRANSCA-fric</h2>
+    </div>
+    <div class="card-image">
+      <img src="../assets/images/dash.png" alt="Transca Card" />
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="login-card">
+      <h2>CONNEXION</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <div class="input-container">
+            <mat-icon class="brand-icon">account_circle</mat-icon>
+            <input
+              type="text"
+              placeholder="entrer votre nom"
+              formControlName="username"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-container">
+            <mat-icon class="brand-icon text-black">lock</mat-icon>
+            <input
+              type="password"
+              placeholder="entrer votre password"
+              formControlName="password"
+            />
+            <mat-icon class="brand-icon text-black">visibility</mat-icon>
+          </div>
+        </div>
+
+        <div class="remember-me">
+          <label class="switch">
+            <input type="checkbox" formControlName="rememberMe" />
+            <span class="slider"></span>
+          </label>
+          <span>se rappeler de moi</span>
+        </div>
+
+        <div class="forgot-password">
+          <span>mot de passe oublié ? </span>
+          <a href="#">modifier</a>
+        </div>
+
+        <button type="submit" class="login-btn">se connecter</button>
+      </form>
+    </div>
+  </div>
+</div>

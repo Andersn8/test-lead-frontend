@@ -38,9 +38,11 @@ export class TransactionComponent implements OnInit {
     this.currentPage = page;
   }
   ngOnInit(): void {
-    this.transacService
-      .getTransaction()
-      .subscribe((transaction) => (this.transactions = transaction));
-    this.filteredTransactions = [...this.transactions];
+    this.transacService.getTransaction().subscribe((transaction) => {
+      // Les données sont reçues ici.
+      this.transactions = transaction;
+      // Et filtrer ou copier le tableau.
+      this.filteredTransactions = [...this.transactions];
+    });
   }
 }

@@ -12,8 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { VirementService } from '../services/virement.service';
 import { Virement } from '../models/virement';
 import { Router } from '@angular/router';
-import { User } from '../models/user';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   standalone: true,
@@ -28,9 +26,8 @@ export class VirementComponent {
   virementService = inject(VirementService);
   router = inject(Router);
   afficherAlerte = false;
-  //authService = inject(AuthService);
   transactions: Virement[] = [];
-  //  user!: User;
+
   constructor(private fb: FormBuilder) {
     this.virementForm = this.fb.group({
       compteSource: ['', Validators.required],
@@ -40,9 +37,7 @@ export class VirementComponent {
       montant: ['', [Validators.required, Validators.min(1)]],
     });
   }
-  ngOnInit(): void {
-    // this.user = this.authService.getCurrentUser();
-  }
+  ngOnInit(): void {}
   onSubmit() {
     if (this.virementForm.valid) {
       this.virementService.addVirement(this.virementForm.value).subscribe();
@@ -54,8 +49,5 @@ export class VirementComponent {
         this.afficherAlerte = false;
       }, 5000);
     }
-  }
-  logout() {
-    this.router.navigate(['/login']);
   }
 }

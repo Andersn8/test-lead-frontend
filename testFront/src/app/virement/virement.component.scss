@@ -4,99 +4,6 @@
   font-family: "Arial", sans-serif;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo-img {
-  height: 40px;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 40px;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #666;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.nav-item.active {
-  color: #4a90e2;
-  background: rgba(74, 144, 226, 0.1);
-}
-
-.nav-item:hover {
-  background: rgba(74, 144, 226, 0.05);
-}
-
-.nav-icon {
-  font-size: 1.2rem;
-}
-
-.user-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.notification {
-  position: relative;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.notification-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ff4757;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.username {
-  font-weight: 600;
-  color: #333;
-}
-
-.logout-btn {
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #ff4757;
-}
-
 .main-content {
   display: flex;
   padding: 40px 30px;
@@ -276,16 +183,6 @@
 }
 
 @media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .nav-menu {
-    gap: 20px;
-  }
-
   .main-content {
     padding: 20px;
   }

@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="logo">
+    <img src="/images/logo.png" alt="Nafric" class="logo-img" />
+  </div>
+
+  <nav class="nav-menu">
+    <a
+      routerLink="/dashboard"
+      class="nav-item"
+      [class.active]="isdashboardval"
+      (click)="isdashboard()"
+    >
+      <mat-icon>dashboard</mat-icon>
+      DASBOARD
+    </a>
+    <a
+      routerLink="/transactions"
+      class="nav-item"
+      [class.active]="istransactiondval"
+      (click)="istransaction()"
+    >
+      <mat-icon>swap_vertical_circle</mat-icon>
+      TRANSACTIONS
+    </a>
+    <a
+      routerLink="/virement"
+      class="nav-item"
+      [class.active]="isvirementval"
+      (click)="isvirement()"
+    >
+      <mat-icon>payment</mat-icon>
+      VIREMENT
+    </a>
+  </nav>
+
+  <div class="user-section">
+    <div class="notification">
+      <mat-icon matBadge="4" matBadgeColor="warn">notifications</mat-icon>
+    </div>
+    <div class="user-profile">
+      <mat-icon>person</mat-icon>
+      <span class="username">ands</span>
+      <!-- <span class="username">{{ user.username }}</span> -->
+      <mat-icon class="brand-icon text-danger" role="button" (click)="logout()"
+        >logout</mat-icon
+      >
+    </div>
+  </div>
+</header>

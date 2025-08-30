@@ -46,3 +46,35 @@ dans la vu transaction vous avez la liste des transaction contenu dans notre bd 
 vous pourez faire un nouveau virement (cela ajoutera un nouveau virement dans notre base)
 
 #### ----------- c'est tout pour le moment merci ~
+
+## Problème lié au localStorage pour avoir accès aux donnéees de l'utilisateur connecté et limiter les appels http
+
+Principales corrections apportées :
+
+# 1. AuthService amélioré :
+
+> BehaviorSubject : Ajout d'un BehaviorSubject pour notifier automatiquement tous les composants des changements d'état de connexion
+> Initialisation : Le service vérifie maintenant au démarrage s'il y a un utilisateur stocké dans le localStorage
+
+    Méthode sync : Ajout d'une méthode getCurrentUserSync() pour obtenir l'utilisateur de façon synchrone si nécessaire
+
+# 2. HeaderComponent optimisé :
+
+> Subscription reactive : Utilisation de currentUser$ observable pour réagir aux changements d'utilisateur en temps réel
+> nDestroy : Implémentation de OnDestroy pour éviter les fuites mémoire
+
+Gestion d'état : Mise à jour automatique de isLoggedIn quand l'utilisateur change
+
+# 3. LoginComponent simplifié :
+
+Logique simplifiée : Suppression de la logique manuelle de vérification des utilisateurs
+Gestion d'erreurs : Meilleure gestion des erreurs avec les observables
+État de chargement : Ajout d'un indicateur loginInProgress
+Vérification initiale : Redirection automatique si l'utilisateur est déjà connecté
+
+# 4. Avantages de ces corrections :
+
+Réactivité : Les composants se mettent à jour automatiquement quand l'état de connexion change
+Cohérence : Une seule source de vérité pour l'état de l'utilisateur
+Performance : Évite les fuites mémoire et les vérifications répétées
+Simplicité : Code plus maintenable et moins sujet aux erreurs
